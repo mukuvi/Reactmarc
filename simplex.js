@@ -38,7 +38,6 @@ async function performFirestoreOperations() {
     await updateDoc(setDocRef, {
       age: 25,
     });
-    console.log("Document updated");
 
     // 5. Delete a document
     const deleteDocRef = doc(db, "students", "studentId");
