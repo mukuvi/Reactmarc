@@ -17,7 +17,6 @@ async function performFirestoreOperations() {
       lastName: "ngandu",
       age: 24,
     });
-    console.log("Document added with ID:", docRef.id);
 
     // 2. Fetch all documents
     const querySnapshot = await getDocs(collection(db, "students"));
@@ -34,7 +33,6 @@ async function performFirestoreOperations() {
       lastName: "mukuvi",
       age: 21,
     });
-    console.log("Document set with ID:", setDocRef.id);
 
     // 4. Update an existing document
     await updateDoc(setDocRef, {
