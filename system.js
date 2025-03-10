@@ -9,77 +9,39 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-async function addDocument() {
+async function performFirestoreOperations() {
   try {
+    // Add a new document
     const docRef = await addDoc(collection(db, "students"), {
       firstName: "james",
       lastName: "ngandu",
       age: 24,
     });
     console.log("Document added with ID:", docRef.id);
-  } catch (error) {
-    console.error("Error adding document:", error);
-  }
-}
 
-async function fetchDocuments() {
-  try {
+    // Fetch all documents
     const querySnapshot = await getDocs(collection(db, "students"));
-    querySnapshot.forEach((doc) => {
-      const docData = doc.data();
-      console.log(`${doc.id} => ${JSON.stringify(docData)}`);
-    });
-  } catch (error) {
-    console.error("Error fetching documents:", error);
-  }
-}
+    console.log("Fetched documents:");
+    querySnapshot.forEach((doc) =>
+      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`)
+    );
 
-async function setDocument() {
-  try {
-    const docRef = doc(db, "students", "MyOn7Cs84VGrIIowTlXH");
-    await setDoc(docRef, {
+    // Set (overwrite or create) a specific document
+    const setDocRef = doc(db, "students", "MyOn7Cs84VGrIIowTlXH");
+    await setDoc(setDocRef, {
       firstName: "james",
       lastName: "mukuvi",
       age: 21,
     });
-    console.log("Document set with ID:", docRef.id);
+
+    // Update an existing document
+    await updateDoc(setDocRef, { age: 25 });
+
+    // Delete a document
+    await deleteDoc(doc(db, "students", "studentId"));
   } catch (error) {
-    console.error("Error setting document:", error);
+    console.log("Error performing Firestore operations:", error);
   }
-}
-
-async function updateDocument() {
-  try {
-    const docRef = doc(db, "students", "MyOn7Cs84VGrIIowTlXH");
-    await updateDoc(docRef, {
-      age: 25,
-    });
-    console.log("Document updated");
-  } catch (error) {
-    console.error("Error updating document:", error);
-  }
-}
-
-async function deleteDocument() {
-  try {
-    const docRef = doc(db, "students", "studentId");
-    await deleteDoc(docRef);
-    console.log("Document deleted");
-  } catch (error) {
-    console.error("Error deleting document:", error);
-  }
-}
-
-async function performFirestoreOperations() {
-  await addDocument();
-
-  await fetchDocuments();
-
-  await setDocument();
-
-  await updateDocument();
-
-  await deleteDocument();
 }
 
 performFirestoreOperations();
