@@ -1,0 +1,8 @@
+{
+  "name": "reactmarc",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "firebase": "^11.4.0"
+  }
+}
