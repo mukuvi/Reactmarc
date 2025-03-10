@@ -42,7 +42,6 @@ async function performFirestoreOperations() {
     // 5. Delete a document
     const deleteDocRef = doc(db, "students", "studentId");
     await deleteDoc(deleteDocRef);
-    console.log("Document deleted");
   } catch (error) {
     console.error("Error performing Firestore operations:", error);
   }
