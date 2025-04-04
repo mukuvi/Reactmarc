@@ -1,0 +1,179 @@
+:root {
+  --primary-color: #ffde00;
+  --primary-light-color: #ffe769;
+  --secondary-color: #ffe4ba;
+  --secondary-light-color: #fff6e8;
+  --post-color: #62eea8;
+  --delete-color: #ff9f9f;
+  --light-color: #fffefc;
+  --grey-color: #747e79;
+  --dark-color: #000000;
+
+  --primary-font: "Cabin", sans-serif;
+  --seconday-font: "Calistoga", sans-serif;
+
+  --border-width: 3px;
+  --element-border-radius: 5px;
+
+  --button-height: 5px;
+
+  --small-button-height: 2px;
+
+  --element-padding: 0.8em;
+
+  --maximum-width: 320px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+body {
+  color: var(--dark-color);
+  background-color: var(--secondary-light-color);
+  font-family: var(--primary-font);
+}
+
+/* === Typography === */
+
+h1 {
+  margin: 0;
+}
+
+.app-title {
+  font-family: var(--seconday-font);
+  font-size: 2.5em;
+  text-align: center;
+}
+
+/* === Sections === */
+
+section {
+  margin: 3em 0;
+}
+
+.auth-fields-and-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* === Structure === */
+
+.container {
+  max-width: var(--maximum-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#logged-out-view .container {
+  gap: 2em;
+}
+
+/* === Common for elements === */
+
+input,
+button {
+  font-family: inherit;
+  padding: var(--element-padding);
+  border-radius: var(--element-border-radius);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.1em;
+  text-align: center;
+  border: var(--border-width) solid var(--dark-color);
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+/* === Input fields === */
+
+input {
+  font-weight: 300;
+}
+
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--grey-color);
+  opacity: 1; /* Firefox */
+}
+
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--grey-color);
+}
+
+input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--grey-color);
+}
+
+/* === Buttons === */
+
+button {
+  font-weight: 600;
+  width: 100%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  box-shadow: 0px var(--button-height) 0px 0px var(--dark-color);
+  position: relative;
+}
+
+.primary-btn:hover {
+  top: var(--button-height);
+  box-shadow: none;
+}
+
+.secondary-btn {
+  padding: 0.4em;
+  background-color: transparent;
+}
+
+.secondary-btn:hover {
+  color: var(--light-color);
+  background-color: var(--dark-color);
+}
+
+.provider-btn {
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  border: 0;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.25);
+}
+
+.provider-btn:hover {
+  transition: all 0.2s ease;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.google-btn-logo {
+  width: 1.375em;
+}
+
+/* === IDs === */
+
+#logged-out-view {
+  display: none;
+}
+
+#logged-in-view {
+  display: none;
+}
